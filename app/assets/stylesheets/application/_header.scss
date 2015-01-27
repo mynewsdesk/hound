@@ -1,8 +1,7 @@
 header.global {
   @include clearfix;
   height: 120px;
-  padding: 0 2em;
-  width: 100%;
+  padding: 0 0.5em;
 
   @include media($small-screen) {
     height: auto;

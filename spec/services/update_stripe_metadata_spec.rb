@@ -22,6 +22,28 @@ describe UpdateStripeMetadata do
 
         expect(stripe_update_request).to have_been_requested
       end
+
+      it "will only update when repo is private" do
+        user = create(:user, stripe_customer_id: stripe_customer_id)
+        repo = create(:repo, private: false)
+        subscription = create(
+          :subscription,
+          stripe_subscription_id: stripe_subscription_id,
+          user: user,
+          repo: repo
+        )
+        stripe_customer_find_request = stub_customer_find_request
+        stripe_subscription_find_request = stub_subscription_find_request(subscription)
+        stripe_update_request = stub_subscription_meta_data_update_request(
+          repo.id
+        )
+
+        UpdateStripeMetadata.run
+
+        expect(stripe_customer_find_request).not_to have_been_requested
+        expect(stripe_subscription_find_request).not_to have_been_requested
+        expect(stripe_update_request).not_to have_been_requested
+      end
     end
 
     context "does not update" do

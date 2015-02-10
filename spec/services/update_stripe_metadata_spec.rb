@@ -33,7 +33,9 @@ describe UpdateStripeMetadata do
           repo: repo
         )
         stripe_customer_find_request = stub_customer_find_request
-        stripe_subscription_find_request = stub_subscription_find_request(subscription)
+        stripe_subscription_find_request = stub_subscription_find_request(
+          subscription
+        )
         stripe_update_request = stub_subscription_meta_data_update_request(
           repo.id
         )

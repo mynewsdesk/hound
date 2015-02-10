@@ -50,7 +50,7 @@ class PaymentGatewayCustomer
   end
 
   class NoSubscription
-    def retrieve(*args)
+    def retrieve(*_args)
       nil
     end
   end

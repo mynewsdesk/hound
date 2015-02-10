@@ -43,6 +43,16 @@ class PaymentGatewayCustomer
     def cards
       []
     end
+
+    def subscriptions
+      NoSubscription.new
+    end
+  end
+
+  class NoSubscription
+    def retrieve(*args)
+      nil
+    end
   end
 
   class BlankCard

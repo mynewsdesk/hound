@@ -89,6 +89,19 @@ module StripeApiHelper
     )
   end
 
+  def stub_subscription_meta_data_update_request(repo_id)
+    stub_request(
+      :post,
+      "https://api.stripe.com/v1/customers/#{stripe_customer_id}/subscriptions/#{stripe_subscription_id}"
+    ).with(
+      body: "metadata[repo_id]=#{repo_id}",
+      headers: { "Authorization" => "Bearer #{ENV["STRIPE_API_KEY"]}" }
+    ).to_return(
+      status: 200,
+      body: File.read("spec/support/fixtures/stripe_subscription_update.json"),
+    )
+  end
+
   def stub_failed_subscription_create_request(plan_type)
     stub_request(
       :post,

@@ -68,7 +68,8 @@ module StripeApiHelper
   def stub_subscription_find_request(subscription)
     stub_request(
       :get,
-      "#{stripe_base_url}/#{stripe_customer_id}/subscriptions/#{subscription.stripe_subscription_id}"
+      "#{stripe_base_url}/#{stripe_customer_id}/"\
+      "subscriptions/#{subscription.stripe_subscription_id}"
     ).with(
       headers: { "Authorization" => "Bearer #{ENV["STRIPE_API_KEY"]}" }
     ).to_return(
@@ -80,7 +81,8 @@ module StripeApiHelper
   def stub_subscription_delete_request
     stub_request(
       :delete,
-      "#{stripe_base_url}/#{stripe_customer_id}/subscriptions/#{stripe_subscription_id}"
+      "#{stripe_base_url}/#{stripe_customer_id}/"\
+      "subscriptions/#{stripe_subscription_id}"
     ).with(
       headers: { "Authorization" => "Bearer #{ENV["STRIPE_API_KEY"]}" }
     ).to_return(
@@ -92,7 +94,8 @@ module StripeApiHelper
   def stub_subscription_meta_data_update_request(repo_id)
     stub_request(
       :post,
-      "#{stripe_base_url}/#{stripe_customer_id}/subscriptions/#{stripe_subscription_id}"
+      "#{stripe_base_url}/#{stripe_customer_id}/"\
+      "subscriptions/#{stripe_subscription_id}"
     ).with(
       body: "metadata[repo_id]=#{repo_id}",
       headers: { "Authorization" => "Bearer #{ENV["STRIPE_API_KEY"]}" }

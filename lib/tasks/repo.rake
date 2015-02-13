@@ -25,7 +25,7 @@ namespace :repo do
         SELECT repos.id FROM repos
         LEFT OUTER JOIN memberships on memberships.repo_id = repos.id
         WHERE memberships.id IS NULL
-      )
+      ) AND repos.active = false
     SQL
   end
 

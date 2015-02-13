@@ -1,6 +1,7 @@
 require "octokit"
 require "base64"
 require "active_support/core_ext/object/with_options"
+require "digest"
 
 class GithubApi
   SERVICES_TEAM_NAME = "Services"
@@ -8,6 +9,7 @@ class GithubApi
 
   def initialize(token = ENV["HOUND_GITHUB_TOKEN"])
     @token = token
+    @file_cache = {}
   end
 
   def client
@@ -76,7 +78,8 @@ class GithubApi
   end
 
   def file_contents(full_repo_name, filename, sha)
-    client.contents(full_repo_name, path: filename, ref: sha)
+    @file_cache[Digest.hexencode(full_repo_name + filename + sha)] ||=
+      client.contents(full_repo_name, path: filename, ref: sha)
   end
 
   def accept_pending_invitations

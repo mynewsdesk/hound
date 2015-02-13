@@ -9,10 +9,6 @@ class PaymentGatewayCustomer
     default_card.last4
   end
 
-  def card_brand
-    default_card.brand
-  end
-
   def customer
     @customer ||= begin
       if user.stripe_customer_id.present?
@@ -57,10 +53,6 @@ class PaymentGatewayCustomer
 
   class BlankCard
     def last4
-      ""
-    end
-
-    def brand
       ""
     end
   end

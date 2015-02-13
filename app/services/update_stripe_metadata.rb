@@ -1,6 +1,6 @@
 class UpdateStripeMetadata
   def self.run
-    Repo.where(private: true).find_each do |repo|
+    Repo.joins(:subscription).find_each do |repo|
       if subscription = repo.subscription
         payment_gateway_customer = PaymentGatewayCustomer.new(
           subscription.user

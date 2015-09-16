@@ -314,9 +314,7 @@ Style/RedundantReturn:
   Enabled: true
   AllowMultipleReturnValues: false
 Style/RegexpLiteral:
-  Description: Use %r for regular expressions matching more than `MaxSlashes` '/'
-    characters. Use %r only for regular expressions matching more than `MaxSlashes`
-    '/' character.
+  Description: Use %r only for regular expressions matching at least one '/' character.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-r
   EnforcedStyle: slashes
   AllowInnerSlashes: false
@@ -912,8 +910,11 @@ Style/UnneededPercentQ:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-q
   Enabled: true
 Style/CommandLiteral:
-  Description: Checks for %x when `` would do.
+  Description: Avoid the use of %x unless you're going to invoke a command with backquotes in it(which is rather unlikely).
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-x
+  EnforcedStyle: backticks
+
+
   AllowInnerBackticks: false
 Style/VariableInterpolation:
   Description: Don't interpolate global, instance and class variables directly in

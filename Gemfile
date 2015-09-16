@@ -26,7 +26,7 @@ gem "resque", "~> 1.25.0"
 gem "resque-retry"
 gem "resque-sentry"
 gem "resque-timeout"
-gem "rubocop", "0.29.1"
+gem "rubocop", "~> 0.34"
 gem "sass-rails"
 gem "scss-lint", "0.34.0", require: false
 gem "sentry-raven"

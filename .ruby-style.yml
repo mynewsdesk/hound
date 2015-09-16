@@ -314,12 +314,10 @@ Style/RedundantReturn:
   Enabled: true
   AllowMultipleReturnValues: false
 Style/RegexpLiteral:
-  Description: Use %r for regular expressions matching more than `MaxSlashes` '/'
-    characters. Use %r only for regular expressions matching more than `MaxSlashes`
-    '/' character.
+  Description: Use %r only for regular expressions matching at least one '/' character.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-r
-  Enabled: false
-  MaxSlashes: 1
+  EnforcedStyle: slashes
+  AllowInnerSlashes: false
 Style/Semicolon:
   Description: Don't use semicolons to terminate expressions.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-semicolon
@@ -633,7 +631,7 @@ Style/BlockComments:
 Style/BlockEndNewline:
   Description: Put end statement of multiline block on its own line.
   Enabled: true
-Style/Blocks:
+Style/BlockDelimiters:
   Description: Avoid using {...} for multi-line blocks (multiline chaining is always
     ugly). Prefer {...} over do...end for single-line blocks.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#single-line-blocks
@@ -911,10 +909,13 @@ Style/UnneededPercentQ:
   Description: Checks for %q/%Q when single quotes or double quotes would do.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-q
   Enabled: true
-Style/UnneededPercentX:
-  Description: Checks for %x when `` would do.
+Style/CommandLiteral:
+  Description: Avoid the use of %x unless you're going to invoke a command with backquotes in it(which is rather unlikely).
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-x
-  Enabled: true
+  EnforcedStyle: backticks
+
+
+  AllowInnerBackticks: false
 Style/VariableInterpolation:
   Description: Don't interpolate global, instance and class variables directly in
     strings.

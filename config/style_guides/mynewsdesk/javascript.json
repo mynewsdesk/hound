@@ -33,5 +33,6 @@
   "quotmark": true,
   "trailing": true,
   "undef": true,
-  "unused": true
+  "unused": true,
+  "-W138": false
 }

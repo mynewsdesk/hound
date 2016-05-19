@@ -1,12 +1,6 @@
 inherit_from:
   - ../ruby.yml
 
-Style/TrailingComma:
-  # If EnforcedStyleForMultiline is comma, the cop allows a comma after the
-  # last item of a list, but only for lists where each item is on its own line.
-  EnforcedStyleForMultiline: comma
-  Enabled: true
-
 Lint/UnusedBlockArgument:
   Enabled: false
 

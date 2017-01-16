@@ -76,25 +76,17 @@ class BuildRunner
 
   def create_resulting_status
     if violations.any?
-      create_failure_status
+      create_success_status I18n.t(:failure_status)
     else
-      create_success_status
+      create_success_status I18n.t(:success_status)
     end
   end
 
-  def create_success_status
+  def create_success_status(message)
     github.create_success_status(
       payload.full_repo_name,
       payload.head_sha,
-      I18n.t(:success_status)
-    )
-  end
-
-  def create_failure_status
-    github.create_failure_status(
-      payload.full_repo_name,
-      payload.head_sha,
-      I18n.t(:failure_status)
+      message,
     )
   end
 

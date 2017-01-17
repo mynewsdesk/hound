@@ -106,7 +106,7 @@ describe BuildRunner, '#run' do
           "headsha",
           "Hound is busy reviewing changes..."
         )
-        expect(github_api).to have_received(:create_failure_status).with(
+        expect(github_api).to have_received(:create_success_status).with(
           "test/repo",
           "headsha",
           "Hound detected a disturbance in the force."
